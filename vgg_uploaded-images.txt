@@ -1,0 +1,89 @@
+Argument 1: uploaded_images/
+Command Line Arguments:
+     dir = uploaded_images/ 
+    arch = vgg 
+ dogfile = dognames.txt
+
+Empty Dictionary results_dic - n items= 0
+Filename= Cow_01.jpg    Label= cow
+Filename= Dog_01.jpg    Label= dog
+Filename= Dog_02.jpg    Label= dog
+Filename= SUV_01.jpg    Label= suv
+
+Printing all key-value pairs in dictionary results_dic:
+Filename= Cow_01.jpg    Pet Label= cow
+Filename= Dog_01.jpg    Pet Label= dog
+Filename= Dog_02.jpg    Pet Label= dog
+Filename= SUV_01.jpg    Pet Label= suv
+
+Pet Image Label Dictionary has 4 key-value pairs.
+Below are 4 of them:
+ 1 key:                     Cow_01.jpg  label:                        cow
+ 2 key:                     Dog_01.jpg  label:                        dog
+ 3 key:                     Dog_02.jpg  label:                        dog
+ 4 key:                     SUV_01.jpg  label:                        suv
+{'Cow_01.jpg': ['cow', 'ox', 0], 'Dog_01.jpg': ['dog', 'german shepherd, german shepherd dog, german police dog, alsatian', 1], 'Dog_02.jpg': ['dog', 'chihuahua', 0], 'SUV_01.jpg': ['suv', 'jeep, landrover', 0]}
+
+     MATCH:
+
+                    Dog_01.jpg: 
+Real:                        dog   Classifier: german shepherd, german shepherd dog, german police dog, alsatian
+
+ NOT A MATCH:
+
+                    Cow_01.jpg: 
+Real:                        cow   Classifier:                             ox
+
+                    Dog_02.jpg: 
+Real:                        dog   Classifier:                      chihuahua
+
+                    SUV_01.jpg: 
+Real:                        suv   Classifier:                jeep, landrover
+
+# Total Images 4 # Matches: 1 # NOT Matches: 3
+
+     MATCH:
+
+                    Dog_01.jpg: 
+Real:                        dog   Classifier: german shepherd, german shepherd dog, german police dog, alsatian  
+PetLabelDog: 1  ClassLabelDog: 1
+
+ NOT A MATCH:
+
+                    Cow_01.jpg: 
+Real:                        cow   Classifier:                             ox  
+PetLabelDog: 0  ClassLabelDog: 0
+
+                    Dog_02.jpg: 
+Real:                        dog   Classifier:                      chihuahua  
+PetLabelDog: 1  ClassLabelDog: 1
+
+                    SUV_01.jpg: 
+Real:                        suv   Classifier:                jeep, landrover  
+PetLabelDog: 0  ClassLabelDog: 0
+
+# Total Images 4 # Matches: 1 # NOT Matches: 3
+
+ ** Statistics from calculates_results_stats() function:
+N Images:  4  N Dog Images:  2  N NotDog Images:  2 
+Pct Corr dog: 100.0 Pct Corr NOTdog: 100.0  Pct Corr Breed:  50.0
+
+ ** Check Statistics - calculated from this function as a check:
+N Images:  4  N Dog Images:  2  N NotDog Images:  2 
+Pct Corr dog: 100.0 Pct Corr NOTdog: 100.0  Pct Corr Breed:  50.0
+
+
+*** Results Summary for CNN Model Architecture VGG ***
+N Images            :   4
+N Dog Images        :   2
+N Not-Dog Images    :   2
+ 
+pct_match: 25.0
+pct_correct_dogs: 100.0
+pct_correct_breed: 50.0
+pct_correct_notdogs: 100.0
+
+INCORRECT Dog Breed Assignment:
+Real:                        dog   Classifier:                      chihuahua
+
+** Total Elapsed Runtime: 0:0:2

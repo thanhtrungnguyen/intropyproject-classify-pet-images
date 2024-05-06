@@ -2,9 +2,9 @@
 # -*- coding: utf-8 -*-
 # */AIPND-revision/intropyproject-classify-pet-images/get_pet_labels.py
 #                                                                             
-# PROGRAMMER: 
-# DATE CREATED:                                  
-# REVISED DATE: 
+# PROGRAMMER: Trung N.
+# DATE CREATED: 01/05/2024                                
+# REVISED DATE: 01/05/2024  - 
 # PURPOSE: Create the function get_pet_labels that creates the pet labels from 
 #          the image's filename. This function inputs: 
 #           - The Image Folder as image_dir within get_pet_labels function and 
@@ -19,7 +19,7 @@
 # Imports python modules
 from os import listdir
 
-# TODO 2: Define get_pet_labels function below please be certain to replace None
+#       Define get_pet_labels function below please be certain to replace None
 #       in the return statement with results_dic dictionary that you create 
 #       with this function
 # 
@@ -40,6 +40,62 @@ def get_pet_labels(image_dir):
       List. The list contains for following item:
          index 0 = pet image label (string)
     """
+
+    ## Retrieve the filenames from folder pet_images/
+    filename_list = listdir(image_dir)
+
+    ## Print 10 of the filenames from folder pet_images/
+    # print("\nPrints 10 filenames from folder pet_images/")
+    # for idx in range(0, 10, 1):
+    #     print("{:2d} file: {:>25}".format(idx + 1, filename_list[idx]) )
+        
+    ## Creates empty dictionary named results_dic
+    results_dic = dict()
+
+    ## Determines number of items in dictionary
+    items_in_dic = len(results_dic)
+    print("\nEmpty Dictionary results_dic - n items=", items_in_dic)
+
+    ## Adds new key-value pairs to dictionary ONLY when key doesn't already exist. This dictionary's value is
+    ## a List that contains only one item - the pet image label
+    for idx in range(0, len(filename_list), 1):
+        ## Sets pet_image variable to a filename 
+        pet_image = filename_list[idx]
+
+        ## Sets string to lower case letters
+        low_pet_image = pet_image.lower()
+
+        ## Create pet_name starting as empty string
+        pet_name = ""
+
+        ## Splits lower case string by _ to break into words 
+        word_list_pet_image = low_pet_image.split("_")
+
+        ## Loops to check if word in pet name is only
+        ## alphabetic characters - if true append word
+        ## to pet_name separated by trailing space 
+        for word in word_list_pet_image:
+            if word.isalpha():
+                pet_name += word + " "
+
+        ## Strip off starting/trailing whitespace characters 
+        pet_name = pet_name.strip()
+
+        # Prints resulting pet_name
+        print("Filename=", pet_image, "   Label=", pet_name)
+
+        if filename_list[idx] not in results_dic:
+            results_dic[filename_list[idx]] = [pet_name]
+        else:
+            print("** Warning: Key=", filename_list[idx], 
+                  "already exists in results_dic with value =", 
+                  results_dic[filename_list[idx]])
+
+    # Iterating through a dictionary printing all keys & their associated values
+    print("\nPrinting all key-value pairs in dictionary results_dic:")
+    for key in results_dic:
+        print("Filename=", key, "   Pet Label=", results_dic[key][0])
+
     # Replace None with the results_dic dictionary that you created with this
     # function
-    return None
+    return results_dic
